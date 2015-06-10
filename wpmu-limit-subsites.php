@@ -3,9 +3,20 @@
  * Plugin Name: WPMU Limit Subsites
  * Description: WordPress Multisite - only allow one site per user.
  * Author: Jason Jersey
- * Version: 1.0
+ * Version: 1.0.1
  */
 
+/* Checks if is WPMS
+ * Since 1.0
+ */
+function wpmu_ic_init() {
+    if ( !is_multisite() )
+        exit( 'The WPMU Limit Subsites plugin is only compatible with WordPress Multisite 3.5+.' );
+}
+
+/* Limit Subsites
+ * Since 1.0
+ */
 function wpmu_limit_subsites($active_signup) {
 
     /* get the array of the current user's blogs */
